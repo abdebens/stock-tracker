@@ -1,8 +1,3 @@
-const supabaseUrl = "https://pjllsxludmrhocbgowsm.supabase.co";
-const supabaseKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqbGxzeGx1ZG1yaG9jYmdvd3NtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIwNDk4ODYsImV4cCI6MjA0NzYyNTg4Nn0.q7vbt58JpH5-9uUhUrKPHBPvR8tOuxdHOr_tj1t3pdA";
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
 const stockData = [];
 const categories = []; // To store categories dynamically
 
