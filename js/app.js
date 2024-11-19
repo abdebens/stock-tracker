@@ -1,4 +1,6 @@
 const stockData = [];
+const categories = []; // To store categories dynamically
+
 let editingIndex = null;
 
 // Add or Update stock entry
@@ -46,6 +48,50 @@ document.getElementById("addStockBtn").addEventListener("click", () => {
   document.getElementById("stockForm").reset();
   updateTable(stockData);
 });
+
+// Add Category Dynamically
+document.getElementById("addCategoryBtn").addEventListener("click", () => {
+  const newCategory = document.getElementById("newCategory").value.trim();
+
+  if (newCategory && !categories.includes(newCategory)) {
+    categories.push(newCategory); // Add the new category to the list
+    updateCategorySelect();
+    updateFilterCategorySelect(); // Update filter dropdown with the new category
+    document.getElementById("newCategory").value = ""; // Clear the input field
+  } else {
+    alert("Please enter a valid, non-empty category.");
+  }
+});
+
+// Update the category select options dynamically for the product form
+function updateCategorySelect() {
+  const categorySelect = document.getElementById("category");
+  const newOption = document.createElement("option");
+  newOption.value = "";
+  newOption.textContent = "Select Category";
+  categorySelect.innerHTML = ""; // Clear existing options
+  categorySelect.appendChild(newOption);
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categorySelect.appendChild(option);
+  });
+}
+
+// Update the filter category select options dynamically
+function updateFilterCategorySelect() {
+  const filterCategorySelect = document.getElementById("filterCategory");
+  filterCategorySelect.innerHTML = "<option value=''>Select Category</option>"; // Reset the options
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    filterCategorySelect.appendChild(option);
+  });
+}
 
 // Filter stock entries
 document.getElementById("filterBtn").addEventListener("click", () => {

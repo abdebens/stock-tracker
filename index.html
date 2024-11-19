@@ -3,19 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/app.css" />
     <title>Product Stock Tracker</title>
+    <link rel="stylesheet" href="./assets/css/app.css" />
   </head>
   <body>
     <h1>Product Stock Tracker</h1>
+    <!-- Add Category Section -->
+    <div>
+      <label for="newCategory">New Category:</label>
+      <input type="text" id="newCategory" placeholder="Enter new category" />
+      <button type="button" id="addCategoryBtn">Add Category</button>
+    </div>
+    <!-- Existing Category input -->
+    <label for="category">Category:</label>
+    <select id="category" required>
+      <option value="">Select Category</option>
+      <!-- Categories will be dynamically added here -->
+    </select>
 
     <!-- Form for Adding Stock -->
     <form id="stockForm">
       <label for="productName">Product Name:</label>
       <input type="text" id="productName" required />
-
-      <label for="category">Category:</label>
-      <input type="text" id="category" required />
 
       <label for="stockUnit">Stock Unit:</label>
       <input type="number" id="stockUnit" required />
@@ -39,14 +48,16 @@
 
       <button type="button" id="addStockBtn">Add Stock</button>
     </form>
-
     <!-- Filter Section -->
     <form id="filterForm">
       <label for="filterMonth">Filter by Month:</label>
       <input type="month" id="filterMonth" />
 
       <label for="filterCategory">Filter by Category:</label>
-      <input type="text" id="filterCategory" placeholder="Enter category" />
+      <select id="filterCategory">
+        <option value="">Select Category</option>
+        <!-- Added categories will be dynamically inserted here -->
+      </select>
 
       <button type="button" id="filterBtn">Filter</button>
     </form>
