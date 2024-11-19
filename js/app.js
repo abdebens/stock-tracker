@@ -61,40 +61,22 @@ document.getElementById("addCategoryBtn").addEventListener("click", () => {
   if (newCategory && !categories.includes(newCategory)) {
     categories.push(newCategory); // Add the new category to the list
     updateCategorySelect();
-    updateFilterCategorySelect(); // Update filter dropdown with the new category
     document.getElementById("newCategory").value = ""; // Clear the input field
   } else {
     alert("Please enter a valid, non-empty category.");
   }
 });
 
-// Update the category select options dynamically for the product form
+// Update the category select options dynamically
 function updateCategorySelect() {
   const categorySelect = document.getElementById("category");
-  const newOption = document.createElement("option");
-  newOption.value = "";
-  newOption.textContent = "Select Category";
-  categorySelect.innerHTML = ""; // Clear existing options
-  categorySelect.appendChild(newOption);
+  categorySelect.innerHTML = "<option value=''>Select Category</option>"; // Reset the options
 
   categories.forEach((category) => {
     const option = document.createElement("option");
     option.value = category;
     option.textContent = category;
     categorySelect.appendChild(option);
-  });
-}
-
-// Update the filter category select options dynamically
-function updateFilterCategorySelect() {
-  const filterCategorySelect = document.getElementById("filterCategory");
-  filterCategorySelect.innerHTML = "<option value=''>Select Category</option>"; // Reset the options
-
-  categories.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category;
-    filterCategorySelect.appendChild(option);
   });
 }
 
